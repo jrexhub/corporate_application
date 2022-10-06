@@ -1,0 +1,602 @@
+@charset "utf-8";
+
+/* *************************************
+
+layout style
+
+************************************** */
+
+[v-cloak] {
+	display: none !important;
+}
+
+.wrapper {
+	position: relative;
+}
+
+[data-cat$="sp"],
+.sp {
+	display: none !important;
+}
+
+.header {
+	background: $base-color;
+	.header__cont {
+		position: relative;
+		width: 1000px;
+		margin: 0 auto;
+		padding: 15px 0;
+		overflow: hidden;
+		.header__logo {
+			float: left;
+			img {
+				width: 162px;
+			}
+		}
+		.header__text {
+			float: right;
+			margin: 23px 0 0;
+			color: #fff;
+		}
+	}
+}
+.main {
+	position: relative;
+	margin: 70px auto 0;
+	.main__cont {
+		margin: 0 auto;
+		width: 1000px;
+		.main__lead {
+			text-align: center;
+			line-height: 2em;
+		}
+		.main__box {
+			margin: 70px auto 0;
+			padding: 50px 0;
+			background: #fff;
+			border-top: solid $base-color 3px;
+			h2 {
+				width: 800px;
+				margin: 0 auto;
+				padding: 0 0 50px;
+				font-size: 21px;
+				line-height: 1em;
+			}
+			.main__privacydoc {
+				border: solid #ccc 1px;
+				width: 800px;
+				margin: 0 auto;
+				padding: 30px 25px;
+				font-size: 14.5px;
+				h4 {
+					margin: 20px 0 0;
+				}
+				p {
+					margin: 5px 0 0;
+					line-height: 1.4em;
+				}
+				.agreement {
+					margin: 30px 0 0;
+					padding: 10px 0;
+					text-align: center;
+					background: $coution-color;
+				}
+			}
+			.error-messages {
+				background-color: $coution-color;
+				padding: 15px;
+				margin: 0 auto 30px;
+				width: 800px;
+				box-sizing: border-box;
+				p {
+					margin-bottom: 10px;
+				}
+				ul li {
+					color: $base-link-color;
+					line-height: 1.4em;
+				}
+			}
+			table {
+				width: 800px;
+				margin: 0 auto 0;
+				&.tableElemIpt {}
+				&.tableElemChk tr td {
+					padding: 18px 0 !important;
+					line-height: 1.2em;
+					&:empty::before {
+						content: '.';
+						filter: alpha(opacity = 0);
+						-moz-opacity: 0;
+						opacity: 0;
+					}
+				}
+				caption {
+					font-weight: bold;
+					padding: 10px 0;
+					border-bottom: dotted 1px $base-color;
+				}
+				tr {
+					&.error {
+						background-color: $coution-color;
+					}
+					th {
+						&.cover {
+							position: relative;
+							&::before {
+								content: '住所';
+								background-color: #fff;
+								padding: 122px 0 0 20px;
+								position: absolute;
+								width: 50px;
+								height: 140px;
+								top: 1px;
+								left: 0;
+							}
+						}
+						padding: 17px 0;
+						line-height: 1.4em;
+						border-bottom: dotted 1px $base-color;
+					}
+					td {
+						padding: 17px 0;
+						line-height: 1.4em;
+						border-bottom: dotted 1px $base-color;
+					}
+					th {
+						width: 30%;
+						span {
+							padding-left: 70px;
+							display: inline-block;
+							position: relative;
+							&.required::before {
+								content: '必須';
+								color: #fff;
+								font-size: 0.7em;
+								padding: 3px 10px 5px;
+								background-color: $base-link-color;
+								border-radius: 3px;
+								position: absolute;
+								top: -4px;
+								left: 13px;
+							}
+						}
+					}
+					td {
+						width: 70%;
+						#loading img {
+							display: none;
+						}
+						p.error-txt {
+							color: $base-link-color;
+							margin: 7px 0 0;
+							font-size: 0.86em;
+						}
+						input[type=text],
+						input[type=number],
+						input[type=tel],
+						input[type=email] {
+							width: 70%;
+							height: 42px;
+							padding: 0 0 0 5px;
+							line-height: 2em;
+							border: solid $border-color 2px;
+						}
+						select {
+							border: solid $border-color 2px;
+							padding: 3px;
+						}
+						textarea {
+							height: 140px;
+							width: 70%;
+							padding: 7px 0 7px 5px;
+							border: solid $border-color 2px;
+						}
+						input {
+							&[name=pcode1] {
+								width: 15%;
+							}
+							&[name=pcode2] {
+								width: 20%;
+							}
+							&[name=sei], &[name=mei], &[name=sei_kana], &[name=mei_kana] {
+								width: 35%;
+							}
+						}
+						&.button__col {
+							text-align: center;
+							border-bottom: none !important;
+							padding: 50px 0 0 !important;
+						}
+						button.btn {
+							border: none;
+							padding: 13px 50px 10px;
+							color: #fff;
+							font-size: 0.9em;
+							border-radius: 5px;
+							background-color: $base-link-color;
+							cursor: pointer;
+						}
+						button.btn {
+							padding: 20px 50px 20px !important;
+							font-size: 1.2em !important;
+						}
+						a.btn {
+							margin-right: 30px;
+							text-decoration: underline;
+						}
+						.btn:hover {
+							opacity: 0.7;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.footer {
+	width: 100%;
+	margin: 70px 0 0;
+	.footer__cont {
+		position: relative;
+		width: 800px;
+		margin: 0 auto;
+		overflow: hidden;
+		.left {
+			float: left;
+			padding: 28px 0 0;
+			.logo {
+				img {
+					width: 100px;
+				}
+				.company {
+					display: inline-block;
+					margin: 0 0 0 20px;
+					padding: 10px 0;
+					font-size: 12px;
+				}
+			}
+		}
+		.right {
+			float: right;
+		}
+	}
+	.footer__belt {
+		background: $base-color;
+		color: #fff;
+		text-align: center;
+		margin: 20px 0 0;
+		padding: 50px 0;
+		.footer__copy {
+			font-size: 12px;
+		}
+	}
+}
+
+
+
+@include mq-down($breakpoint: md) { // 最大サイズ768px 引数を省略時、初期値はmdサイズ
+
+.header {
+	.header__cont {
+		width: auto;
+		padding: 15px 20px;
+		.header__logo {
+			img {
+				width: 120px;
+			}
+		}
+		.header__text {
+			margin: 18px 0 0;
+		}
+	}
+}
+.main {
+	margin: 40px auto 0;
+	.main__cont {
+		width: auto;
+		margin: 0 auto;
+		.main__lead {
+		}
+		.main__box {
+			margin: 40px 20px 0;
+			padding: 40px 20px;
+			border-top: solid $base-color 2px;
+			h2 {
+				width: auto;
+				padding: 0 0 30px 0;
+				font-size: 19px;
+			}
+			.main__privacydoc {
+				width: auto;
+				// margin: 0 20px;
+				padding: 25px 20px;
+				font-size: 14px;
+				h4 {
+				}
+				p {
+				}
+				.agreement {
+				}
+			}
+			.error-messages {
+				width: auto;
+				margin: 0 20px 30px;
+				padding: 15px;
+				p {
+				}
+				ul li {
+				}
+			}
+			table {
+				// width: auto;
+				width: 100%;
+				// margin: 0 20px 0;
+				margin: 0 0 0;
+				&.tableElemIpt {}
+				&.tableElemChk tr td {
+					&:empty::before {
+					}
+				}
+				caption {
+				}
+				tr {
+					&.error {
+					}
+					th {
+						&.cover {
+							&::before {
+							}
+						}
+					}
+					td {
+					}
+					th {
+						span {
+							&.required::before {
+							}
+			            }
+					}
+					td {
+						#loading img {
+						}
+						p.error-txt {
+						}
+						input[type=text],
+						input[type=number],
+						input[type=tel],
+						input[type=email] {
+						}
+						select {
+						}
+						textarea {
+						}
+						input {
+							&[name=pcode1] {
+							}
+							&[name=pcode2] {
+							}
+							&[name=sei], &[name=mei], &[name=sei_kana], &[name=mei_kana] {
+							}
+						}
+						&.button__col {
+						}
+						button.btn {
+						}
+						button.btn {
+							padding: 20px 40px 20px !important;
+						}
+						a.btn {
+						}
+						.btn:hover {
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.footer {
+	width: auto;
+	margin: 50px 0 0;
+	.footer__cont {
+		width: auto;
+		padding: 0 20px;
+		.left {
+			.logo {
+				img {
+					width: 90px;
+				}
+				.company {
+				}
+			}
+		}
+		.right {
+		}
+	}
+	.footer__belt {
+		padding: 30px 0;
+		.footer__copy {
+		}
+	}
+}
+
+}
+
+@include mq-down($breakpoint: sm) { // 最大サイズ414px 引数を省略時、初期値はmdサイズ
+
+.header {
+	.header__cont {
+		.header__logo {
+			img {
+				width: 100px;
+			}
+		}
+		.header__text {
+			margin: 16px 0 0;
+			font-size: 0.8em;
+		}
+	}
+}
+.main {
+	margin: 30px auto 0;
+	.main__cont {
+		.main__lead {
+			line-height: 1.4em;
+			font-size: 0.8em;
+		}
+		.main__box {
+			margin: 30px 10px 0;
+			// padding: 30px 0;
+			padding: 30px 10px;
+			h2 {
+				width: auto;
+				padding: 0 0 30px 0;
+				font-size: 17px;
+			}
+			.main__privacydoc {
+				// margin: 0 10px;
+				padding: 20px 15px;
+				font-size: 12px;
+				h4 {
+					line-height: 1.2em;
+				}
+				p {
+					line-height: 1.2em;
+				}
+				.agreement {
+					margin: 20px 0 0;
+				}
+			}
+			.error-messages {
+				margin: 0 10px 30px;
+				padding: 10px;
+				p {
+					font-size: 14px;
+				}
+				ul li {
+					line-height: 1.2em;
+					font-size: 14px;
+				}
+			}
+			table {
+				// width: auto;
+				// margin: 0 10px 0;
+				&.tableElemIpt {}
+				&.tableElemChk tr td {
+					&:empty::before {
+					}
+				}
+				caption {
+					font-size: 14px;
+				}
+				tr {
+					&.error {
+					}
+					th {
+						&.cover {
+							&::before {
+							}
+						}
+					}
+					th,
+					td {
+						display: block;
+						width: 100%;
+						font-size: 0.85em;
+					}
+					td {
+					}
+					th {
+						background-color: #e0e0e0;
+						border-bottom: none;
+						span {
+							padding-left: 60px;
+						}
+						span:not(.required) {
+							padding-left: 20px;
+						}
+							&.cover {
+							position: relative;
+							&::before {
+								content: initial;
+								background-color: initial;
+							}
+						}
+					}
+					td {
+						padding-left: 2%;
+						box-sizing: border-box;
+						span {
+							padding: 0;
+							display: block;
+						}
+						select {
+							&.selectElementW90p{
+								width: 90%;
+							}
+						}
+						textarea {
+							width: 90%;
+						}
+						input {
+							&[name=pcode1] {
+								width: 20%;
+							}
+							&[name=pcode2] {
+								width: 25%;
+							}
+							&[name=sei], &[name=mei], &[name=sei_kana], &[name=mei_kana] {
+								width: 40%;
+							}
+						}
+						&.button__col {
+							padding: 30px 0 0 !important;
+						}
+						button.btn, a.btn {
+							border: none;
+							padding: 13px 30px 13px;
+						}
+						a.btn {
+							margin-right: 10px;
+							margin-bottom: 10px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.footer {
+	margin: 30px 0 0;
+	.footer__cont {
+		padding: 0 10px;
+		.left {
+			float: none;
+			.logo {
+				text-align: center;
+				img {
+					width: 90px;
+				}
+				.company {
+					display: block;
+					margin: 10px 0 0 0;
+					padding: 0 0;
+				}
+			}
+		}
+		.right {
+			float: none;
+			text-align: center;
+			margin: 30px 0 0;
+		}
+	}
+	.footer__belt {
+		margin: 30px 0 0;
+		padding: 20px 0;
+		.footer__copy {
+			font-size: 10px;
+		}
+	}
+}
+
+}

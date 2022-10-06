@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+/* *************************************
+Date: 2021-05-19
+SCSS Document: コーポレートサイト お問合せフォーム
+
+common style
+
+************************************** */
+
+@import 'compass/reset';
+@import 'compass';
+
+@import 'settings';
+@import 'functions';
+@import 'mixin';
+@import 'base';
+@import 'layout';
+
+@import 'include/font';

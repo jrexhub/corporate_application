@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+/* *************************************
+
+settings style
+
+************************************** */
+
+// min-width
+$breakpoint-up: (
+	'sm': 'all and (min-width: 415px)',
+	'md': 'all and (min-width: 769px)',
+	'lg': 'all and (min-width: 1001px)',
+	'xl': 'all and (min-width: 1201px)',
+) !default;
+
+// max-width
+$breakpoint-down: (
+	'sm': 'all and (max-width: 414px)',
+	'md': 'all and (max-width: 768px)',
+	'lg': 'all and (max-width: 1000px)',
+	'xl': 'all and (max-width: 1200px)',
+) !default;
+
+$margin-class: true !default;
+$padding-class: true !default;
+$end-val: 10 !default;
+
+$image-dir : '../image/';
+$font-dir : '../font/';
+
+$base-color: #333;
+$base-link-color: #af1e25;
+$btn-color: #af1e25;
+$btn-color-contrast: #af1e25;
+$coution-color: #fce4e5;
+$bg-color: #fbfbfb;
+$border-color: #eee;
