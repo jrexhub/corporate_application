@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* *************************************
-Date: 2021-05-19
+Date: 2022-10-06
 SCSS Document: コーポレートサイト お問合せフォーム
 
 common style
@@ -427,6 +427,9 @@ layout style
 .main .main__cont .main__box table {
   width: 800px;
   margin: 0 auto 0;
+}
+.main .main__cont .main__box table.isArticle {
+  margin-top: 50px;
 }
 .main .main__cont .main__box table.tableElemChk tr td {
   padding: 18px 0 !important;
