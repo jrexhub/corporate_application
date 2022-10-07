@@ -1,9 +1,9 @@
 <?php
-// echo '<pre>';
-// print_r($_POST);
-// echo '</pre>';
+/*echo '<pre>';
+print_r($_POST);
+echo '</pre>';*/
 
-// echo "phpスクリプトの読み込み！";
+//echo "phpスクリプトの読み込み！";
 // exit;
 
 
@@ -17,9 +17,9 @@ class formClass
 	protected $mailTo = 'info@j-rex.co.jp';
 	// protected $mailTo = 'h.okada@j-rex.co.jp';
 	// protected $mailBcc = 'jrex.okada@gmail.com';//jrex-it@j-rex.co.jp
-	protected $mailToBisinessMaster = 'y.nakamura@j-rex.co.jp';//中村部長
-	protected $mailToRentMaster = 't.negishi@j-rex.co.jp';//根岸部長
-	protected $mailSubject = '【J-REX WEBサイト】お問合わせがありました';
+	// protected $mailToBisinessMaster = 'y.nakamura@j-rex.co.jp';//中村部長
+	// protected $mailToRentMaster = 't.negishi@j-rex.co.jp';//根岸部長
+	protected $mailSubject = '【不動産活用相談窓口】お問合わせがありました';
 	protected $mailCharset = 'UTF-8';
 	protected $inputPage = 'index.php';
 	protected $thankPage = 'thanks.html';
@@ -47,6 +47,15 @@ class formClass
 		'鳥取県', '島根県', '岡山県', '広島県', '山口県', '徳島県', '香川県', '愛媛県', '高知県', '福岡県',
 		'佐賀県', '長崎県', '熊本県', '大分県', '宮崎県', '鹿児島県', '沖縄県',
 	);
+	public $kind_arr = array(
+		1 => 'まずは相談にのってほしい', '売却査定依頼', '不動産の有効活用',
+	);
+	public $condition_arr = array(
+		1 => '使用していない', '使用している(第三者による使用を含む)', '使用しなくなる予定',
+	);
+	public $article_arr = array(
+		1 => 'マンション', 'アパート', '戸建て', '1棟収益物件', '店舗、事務所', '土地', 'その他',
+	);
 	public $ip_arr = array(
 		// 'JREX' => '152.165.118.182',//ジェイレックス
 		'arteria' => '43.233.78.220',
@@ -55,7 +64,7 @@ class formClass
 		'fwd-jscgateway02.j-scube.com' => '61.204.27.84',
 		'118-86-146-55.kakt.j-cnet.jp' => '118.86.146.55',
 		'fwd-jscgateway01.j-scube.com' => '106.186.220.132',
-		'LOCAL' => '::1',//ローカルホスト
+		// 'LOCAL' => '::1',//ローカルホスト
 	);
 
 	function __construct() {
@@ -80,7 +89,7 @@ class formClass
 		if (in_array($_SERVER["REMOTE_ADDR"], $this->ip_arr)){
 			// echo $_SERVER["REMOTE_ADDR"] . "は一致しましたので非表示にします";
 			//$disp = 'style="display: none;"';
-header('Location: https://www.j-rex.co.jp/?ref=contact_ip_error');
+header('Location: https://www.j-rex.co.jp/?ref=contact_application_ip_error');
 exit();
 		} else {
 			// echo $_SERVER["REMOTE_ADDR"] . "不一致でした";
@@ -125,7 +134,9 @@ exit();
 			// exit;
 
 			//メール本文の作成(ジェイレックスへ)
-			$mail_body = "コーポレートサイトよりお問合せがありました\n\n";
+			$mail_body = "不動産活用相談窓口フォームよりお問合せがありました\n\n";
+			$mail_body .= "■お客様情報\n";
+			$mail_body .= "----------------------------------------------------------------------\n";
 			$mail_body .= "お名前　　　　　: {$this->postData['sei']}{$this->postData['mei']}\n";
 			$mail_body .= "お名前（カナ）　: {$this->postData['sei_kana']}{$this->postData['mei_kana']}\n";
 			$mail_body .= "郵便番号　　　　: {$this->postData['pcode_str']}\n";
@@ -134,8 +145,13 @@ exit();
 			$mail_body .= "建物名・部屋番号: {$this->postData['building']}\n";
 			$mail_body .= "電話番号　　　　: {$this->postData['tel']}\n";
 			$mail_body .= "メールアドレス　: {$this->postData['mail']}\n";
-			$mail_body .= "お問合せ種別　　: {$this->postData['kind']}\n";
-			$mail_body .= "お問合せ内容　　: {$this->postData['comment']}\n";
+			$mail_body .= "\n■物件情報\n";
+			$mail_body .= "----------------------------------------------------------------------\n";
+			$mail_body .= "ご相談種別　　　: {$this->postData['kind']}\n";
+			$mail_body .= "現在の状況　　　: {$this->postData['condition']}\n";
+			$mail_body .= "物件の種別　　　: {$this->postData['article']}\n";
+			$mail_body .= "所在地等　　　　: {$this->postData['location']}\n";
+			$mail_body .= "ご相談内容　　　: {$this->postData['comment']}\n";
 			$mail_body .= "\n";
 			$mail_body .= "==================================================\n";
 			$mail_body .= "date:" . date("Y/m/d(D)H:i:s", time()) . "\n";
@@ -174,11 +190,11 @@ exit();
 			$params = '-f ' . 'info@j-rex.co.jp';
 
 			//送信先の追加
-			if ($this->postData['kind'] == "事業、サービスについて") {
-				$mail_to .= "," . $this->mailToBisinessMaster;
-			} elseif ($this->postData['kind'] == "居住中の物件について") {
-				$mail_to .= "," . $this->mailToRentMaster;
-			}
+			// if ($this->postData['kind'] == "事業、サービスについて") {
+			// 	$mail_to .= "," . $this->mailToBisinessMaster;
+			// } elseif ($this->postData['kind'] == "居住中の物件について") {
+			// 	$mail_to .= "," . $this->mailToRentMaster;
+			// }
 
 			//メッセージ送信(to jrex)
 			$this->send_message($mail_to, $mail_subject, $mail_body, $mail_head, $params);
@@ -346,9 +362,21 @@ exit();
 		/*if ($this->is_empty($_POST['address']) == true) {
 			$errors['address'] =  '市区郡 町名・番地を入力してください';
 		}*/
+		//ご相談種別//
+		if ($this->is_empty(@$_POST['kind']) == true) {
+			$errors['kind'] =  'ご相談種別を入力してください';
+		}
+		//現在の状況//
+		if ($this->is_empty(@$_POST['condition']) == true) {
+			$errors['condition'] =  '現在の状況を入力してください';
+		}
+		//物件の種別//
+		if ($this->is_empty(@$_POST['article']) == true) {
+			$errors['article'] =  '物件の種別を入力してください';
+		}
 		//お問合せ内容//
 		if ($this->is_empty($_POST['comment']) == true) {
-			$errors['comment'] =  'お問合せ内容を入力してください';
+			$errors['comment'] =  'ご相談内容を入力してください';
 		}
 
 		return $errors;
@@ -404,6 +432,19 @@ exit();
 		}
 
 		$html_tag .= "</select>\n";
+		return $html_tag;
+	}
+	public function get_radio_element($name, $posted_val = NULL, $data_arr, $id = NULL, $class = NULL) {
+		$html_tag = "";
+
+		foreach ($data_arr as $key => $val) {
+			if ($val == $posted_val) {
+				$html_tag .= "<label for=\"{$name}_{$key}\"><input id=\"{$name}_{$key}\" type=\"radio\" name=\"{$name}\" value=\"{$val}\" checked=\"checked\">{$val}</label><br>";
+			} else {
+				$html_tag .= "<label for=\"{$name}_{$key}\"><input id=\"{$name}_{$key}\" type=\"radio\" name=\"{$name}\" value=\"{$val}\">{$val}</label><br>";
+			}
+		}
+
 		return $html_tag;
 	}
 	protected function get_indexpage_url() {

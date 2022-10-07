@@ -100,6 +100,9 @@ layout style
 				width: 800px;
 				margin: 0 auto 0;
 				&.tableElemIpt {}
+				&.isArticle {
+					margin-top: 50px;
+				}
 				&.tableElemChk tr td {
 					padding: 18px 0 !important;
 					line-height: 1.2em;
@@ -354,7 +357,7 @@ layout style
 						span {
 							&.required::before {
 							}
-			            }
+						}
 					}
 					td {
 						#loading img {

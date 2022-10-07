@@ -26,8 +26,8 @@ if (obj.startday < obj.today && obj.today < obj.endday) {
 </script>
 
 <meta charset="utf-8">
-<title>お問合せ | ジェイレックス・コーポレーション株式会社[J-REX]</title>
-<meta name="description" content="ジェイレックス・コーポレーション株式会社へのお問合せ窓口です。弊社の事業、サービス、採用に関する質問をはじめ、ご意見ご感想など、お気軽にご記入ください。">
+<title>不動産活用相談窓口 | ジェイレックス・コーポレーション株式会社[J-REX]</title>
+<meta name="description" content="ジェイレックス・コーポレーション株式会社へのお問合せ窓口です。空き家・空き店舗に関する悩み・不安など、お気軽にご記入ください。">
 <meta name="keyword" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -59,7 +59,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="header">
 	<div class="header__cont">
 		<h1 class="header__logo"><img src="assets/image/logo.png" alt="ジェイレックス・コーポレーション株式会社"></h1>
-		<p class="header__text">お問合せ</p>
+		<p class="header__text">不動産活用相談窓口</p>
 	</div>
 </header><!-- [ /header ] -->
 
@@ -74,7 +74,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="main__box">
 			<h2>内容をご確認の上、送信してください</h2>
 			<table class="tableElemChk">
-				<caption>ご入力いただいた内容</caption>
+				<caption>ご連絡先情報</caption>
 				<tr>
 					<th scope="row"><span class="required">お名前</span></th>
 					<td><?php echo $formObj->escape($formObj->params['seimei']); ?></td>
@@ -107,12 +107,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<th scope="row"><span class="required">メールアドレス</span></th>
 					<td><?php echo $formObj->escape($formObj->params['mail']); ?></td>
 				</tr>
+			</table>
+
+			<table class="tableElemChk isArticle">
+				<caption>不動産に関する情報</caption>
 				<tr>
-					<th scope="row"><span class="required">お問合せ種別</span></th>
+					<th scope="row"><span class="required">ご相談種別</span></th>
 					<td><?php echo $formObj->escape($formObj->params['kind']); ?></td>
 				</tr>
 				<tr>
-					<th scope="row"><span class="required">お問合せ内容</span></th>
+					<th scope="row"><span class="required">現在の状況</span></th>
+					<td><?php echo $formObj->escape($formObj->params['condition']); ?></td>
+				</tr>
+				<tr>
+					<th scope="row"><span class="required">物件の種別</span></th>
+					<td><?php echo $formObj->escape($formObj->params['article']); ?></td>
+				</tr>
+				<tr>
+					<th scope="row"><span>所在地、最寄り駅等</span></th>
+					<td><?php echo $formObj->escape($formObj->params['location']); ?></td>
+				</tr>
+				<tr>
+					<th scope="row"><span class="required">ご相談内容</span></th>
 					<td><?php echo $formObj->nltobr($formObj->escape($formObj->params['comment'])); ?></td>
 				</tr>
 				<tr>
@@ -122,97 +138,109 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		</div>
 	</form>
 <?php else: ?>
-    <p class="main__lead">下記「個人情報の取り扱いについて」の内容をご確認、同意いただき入力へお進みください<br>お問合せフォームからのセールス等はご遠慮ください</p>
+	<p class="main__lead">下記「個人情報の取り扱いについて」の内容をご確認、同意いただき入力へお進みください<br>お問合せフォームからのセールス等はご遠慮ください</p>
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>#submit" method="post" name="formInput" onSubmit="return privacyCheck(document.getElementById('privacy')); return false;">
 	<input type="hidden" name="_onConfirm" value="1">
-        <div class="main__box">
-            <h2>個人情報の取扱いについて</h2>
-            <div class="main__privacydoc">
-                <h3>■このフォームでお預かりする個人情報の取扱いについて</h3>
-                <h4>1. 事業者の氏名又は名称</h4>
-                <p>ジェイレックス・コーポレーション株式会社</p>
-                <h4>2. 個人情報保護管理者（若しくはその代理人）の氏名又は職名、所属及び連絡先</h4>
-                <p>管理者名：中村安利<br>所属部署：管理部 部長<br>連絡先：TEL：03-3345-6012</p>
-                <h4>3. 個人情報の利用目的</h4>
-                <p>・お問い合わせ対応（本人への連絡を含む）のため</p>
-                <h4>4. 個人情報の開示等の請求</h4>
-                <p>ご本人様は、当社に対してご自身の個人情報の利用目的の通知、開示、内容の訂正、追加又は削除、利用の停止、消去及び第三者への提供の停止に関して、下記の当社問合わせ窓口に申し出ることができます。その際、当社はお客様ご本人を確認させていただいたうえで、合理的な期間内に対応いたします。</p>
-                <p>【お問合せ窓口】<br>〒160-0023 東京都新宿区西新宿1-23-7 新宿ファーストウエスト16F<br>ジェイレックス・コーポレーション株式会社 お客様相談室<br>TEL：0120-288-665　FAX：03-3345-6011<br>※土・日曜日、祝日、年末年始、ゴールデンウィーク期間は翌営業日以降の対応とさせていただきます。</p>
-                <h4>5. 個人情報を提供されることの任意性について</h4>
-                <p>ご本人様が当社に個人情報を提供されるかどうかは任意によるものです。ただし、必要な項目をいただけない場合、適切な対応ができない場合があります。</p>
-                <div class="agreement" id="agreement">
-    				<label for="privacy"><input type="checkbox" name="privacy" id="privacy" value="1" <?php if (@$formObj->params['privacy']) { echo "checked=\"checked\"";} ?>> 同意する</label>
-    			</div>
-            </div>
-        </div>
+		<div class="main__box">
+			<h2>個人情報の取扱いについて</h2>
+			<div class="main__privacydoc">
+				<h3>■このフォームでお預かりする個人情報の取扱いについて</h3>
+				<h4>1. 事業者の氏名又は名称</h4>
+				<p>ジェイレックス・コーポレーション株式会社</p>
+				<h4>2. 個人情報保護管理者（若しくはその代理人）の氏名又は職名、所属及び連絡先</h4>
+				<p>管理者名：中村安利<br>所属部署：管理部 部長<br>連絡先：TEL：03-3345-6012</p>
+				<h4>3. 個人情報の利用目的</h4>
+				<p>・お問い合わせ対応（本人への連絡を含む）のため</p>
+				<h4>4. 個人情報の開示等の請求</h4>
+				<p>ご本人様は、当社に対してご自身の個人情報の利用目的の通知、開示、内容の訂正、追加又は削除、利用の停止、消去及び第三者への提供の停止に関して、下記の当社問合わせ窓口に申し出ることができます。その際、当社はお客様ご本人を確認させていただいたうえで、合理的な期間内に対応いたします。</p>
+				<p>【お問合せ窓口】<br>〒160-0023 東京都新宿区西新宿1-23-7 新宿ファーストウエスト16F<br>ジェイレックス・コーポレーション株式会社 お客様相談室<br>TEL：0120-288-665　FAX：03-3345-6011<br>※土・日曜日、祝日、年末年始、ゴールデンウィーク期間は翌営業日以降の対応とさせていただきます。</p>
+				<h4>5. 個人情報を提供されることの任意性について</h4>
+				<p>ご本人様が当社に個人情報を提供されるかどうかは任意によるものです。ただし、必要な項目をいただけない場合、適切な対応ができない場合があります。</p>
+				<div class="agreement" id="agreement">
+					<label for="privacy"><input type="checkbox" name="privacy" id="privacy" value="1" <?php if (@$formObj->params['privacy']) { echo "checked=\"checked\"";} ?>> 同意する</label>
+				</div>
+			</div>
+		</div>
 
-        <div class="main__box">
-            <?php if (@$formObj->params['errors']) { ?>
-    		<div class="error-messages" id="submit">
-    			<p>以下の項目に誤りがございます。再度ご入力をお願いいたします。</p>
-    			<ul>
-    				<?php foreach (@$formObj->params['errors'] as $key => $val) { ?>
-    					<li>■<?php echo $formObj->escape(@$formObj->params['errors'][$key]); ?></li>
-    				<?php } ?>
-    			</ul>
-    		</div>
-    		<?php } ?>
+		<div class="main__box">
+			<?php if (@$formObj->params['errors']) { ?>
+			<div class="error-messages" id="submit">
+				<p>以下の項目に誤りがございます。再度ご入力をお願いいたします。</p>
+				<ul>
+					<?php foreach (@$formObj->params['errors'] as $key => $val) { ?>
+						<li>■<?php echo $formObj->escape(@$formObj->params['errors'][$key]); ?></li>
+					<?php } ?>
+				</ul>
+			</div>
+			<?php } ?>
 
-            <h2>必要事項をご入力ください</h2>
-            <table id="top" class="tableElemIpt">
-				<caption>お問合せフォーム</caption>
-    			<tr class="<?php if (@$formObj->params['errors']['seimei']) { echo "error"; } ?>">
-    				<th scope="row"><span class="required">お名前</span></th>
-    				<td><input type="text" name="sei" placeholder="例：新宿" value="<?php echo @$formObj->params['sei']; ?>">&nbsp;&nbsp;<input type="text" name="mei" placeholder="例：太郎" value="<?php echo @$formObj->params['mei']; ?>">
-                        <?php if (@$formObj->params['errors']['seimei']) { echo "<p class=\"error-txt\">" . $formObj->escape($formObj->params['errors']['seimei']) . "</p>";} ?></td>
-    			</tr>
-                <tr class="<?php if (@$formObj->params['errors']['seimei_kana']) { echo "error"; } ?>">
-    				<th scope="row"><span class="required">お名前(カナ)</span></th>
-    				<td><input type="text" name="sei_kana" placeholder="例：シンジュク" value="<?php echo @$formObj->params['sei_kana']; ?>">&nbsp;&nbsp;<input type="text" name="mei_kana" placeholder="例：タロウ" value="<?php echo @$formObj->params['mei_kana']; ?>">
-                        <?php if (@$formObj->params['errors']['seimei_kana']) { echo "<p class=\"error-txt\">" . $formObj->escape($formObj->params['errors']['seimei_kana']) . "</p>";} ?></td>
-    			</tr>
-    			<tr>
-    				<th scope="row" class="cover"><span>郵便番号</span></th>
-    				<td><span id="loading"><img src="assets/image/loading.gif"></span><input type="text" name="pcode1" class="pcode1 mode-disabled" placeholder="例：160" value="<?php echo @$formObj->params['pcode1']; ?>" maxlength="3"> - <input type="text" name="pcode2" class="pcode2 mode-disabled" placeholder="例：0023" value="<?php echo @$formObj->params['pcode2']; ?>" maxlength="4"> (半角数字)</td>
-    			</tr>
-    			<tr>
-    				<th scope="row"><span>都道府県</span></th>
-    				<td><?php echo $formObj->get_select_element('pref', @$formObj->params['pref'], $formObj->pref_arr, 'pref', 'selectElementA01'); ?></td>
-    			</tr>
-    			<tr>
-    				<th scope="row"><span>市区町村・番地</span></th>
-    				<td><input type="text" id="city" name="city" placeholder="例：新宿区西新宿1-23-7" value="<?php echo @$formObj->params['city']; ?>"></td>
-    			</tr>
-    			<tr>
-    				<th scope="row"><span>建物名・部屋番号</span></th>
-    				<td><input type="text" name="building" placeholder="例：新宿ファーストウエスト16F" value="<?php echo @$formObj->params['building']; ?>"></td>
-    			</tr>
-    			<tr class="<?php if (@$formObj->params['errors']['tel']) { echo "error"; } ?>">
-    				<th scope="row"><span class="required">電話番号</span></th>
-    				<td><input type="text" name="tel" class="mode-disabled" placeholder="例：03-3345-6012" value="<?php echo @$formObj->params['tel']; ?>"> (半角数字)<?php if (@$formObj->params['errors']['tel']) { echo "<p class=\"error-txt\">" . $formObj->escape($formObj->params['errors']['tel']) . "</p>";} ?></td>
-    			</tr>
-    			<tr class="<?php if (@$formObj->params['errors']['mail']) { echo "error"; } ?>">
-    				<th scope="row"><span class="required">メールアドレス</span></th>
-    				<td><input type="text" name="mail" class="mode-disabled" placeholder="例：example@j-rex.co.jp" value="<?php echo @$formObj->params['mail']; ?>"> (半角英数字)<?php if (@$formObj->params['errors']['mail']) { echo "<p class=\"error-txt\">" . $formObj->escape($formObj->params['errors']['mail']) . "</p>";} ?></td>
-    			</tr>
-                <tr class="<?php if (@$formObj->params['errors']['kind']) { echo "error"; } ?>">
-    				<th scope="row"><span class="required">お問合せ種別</span></th>
-    				<td><label for="kind_business"><input id="kind_business" type="radio" name="kind" value="事業、サービスについて" <?php if (@$formObj->params['kind'] == '事業、サービスについて') { echo "checked=\"checked\"";} ?>> 事業、サービスについて</label> <label for="kind_article"><input id="kind_article" type="radio" name="kind" value="居住中の物件について" <?php if (@$formObj->params['kind'] == '居住中の物件について') { echo "checked=\"checked\"";} ?>> 居住中の物件について</label>
-					<br>
-                    <label for="kind_recruit"><input id="kind_recruit" type="radio" name="kind" value="採用について" <?php if (@$formObj->params['kind'] == '採用について') { echo "checked=\"checked\"";} ?>> 採用について</label>
-                    <label for="kind_other"><input id="kind_other" type="radio" name="kind" value="その他" <?php if (@$formObj->params['kind'] == 'その他') { echo "checked=\"checked\"";} ?>> その他</label>
-                        <?php if (@$formObj->params['errors']['driver']) { echo "<p class=\"error-txt\"><i class=\"fa fa-exclamation-circle fa-lg fa-fw\" aria-hidden=\"true\"></i>" . $formObj->escape($formObj->params['errors']['driver']) . "</p>";} ?></td>
-    			</tr>
-    			<tr class="<?php if (@$formObj->params['errors']['comment']) { echo "error"; } ?>">
-    				<th scope="row"><span class="required">お問合せ内容</span></th>
-    				<td><textarea name="comment" placeholder="例：遊休土地の活用方法について、いくつか検討している。マンション経営での資産運用について相談したい。"><?php echo @$formObj->params['comment']; ?></textarea><?php if (@$formObj->params['errors']['comment']) { echo "<p class=\"error-txt\">" . $formObj->escape($formObj->params['errors']['comment']) . "</p>";} ?></td>
-    			</tr>
-    			<tr>
-    				<td colspan="2" class="button__col"><button class="btn" type='submit' id='onCheck' name='onCheck' value='check'>入力内容の確認</button></td>
-    			</tr>
-    		</table>
+			<h2>必要事項をご入力ください</h2>
+			<table id="top" class="tableElemIpt">
+				<caption>ご連絡先情報</caption>
+				<tr class="<?php if (@$formObj->params['errors']['seimei']) { echo "error"; } ?>">
+					<th scope="row"><span class="required">お名前</span></th>
+					<td><input type="text" name="sei" placeholder="例：新宿" value="<?php echo @$formObj->params['sei']; ?>">&nbsp;&nbsp;<input type="text" name="mei" placeholder="例：太郎" value="<?php echo @$formObj->params['mei']; ?>">
+						<?php if (@$formObj->params['errors']['seimei']) { echo "<p class=\"error-txt\">" . $formObj->escape($formObj->params['errors']['seimei']) . "</p>";} ?></td>
+				</tr>
+				<tr class="<?php if (@$formObj->params['errors']['seimei_kana']) { echo "error"; } ?>">
+					<th scope="row"><span class="required">お名前(カナ)</span></th>
+					<td><input type="text" name="sei_kana" placeholder="例：シンジュク" value="<?php echo @$formObj->params['sei_kana']; ?>">&nbsp;&nbsp;<input type="text" name="mei_kana" placeholder="例：タロウ" value="<?php echo @$formObj->params['mei_kana']; ?>">
+						<?php if (@$formObj->params['errors']['seimei_kana']) { echo "<p class=\"error-txt\">" . $formObj->escape($formObj->params['errors']['seimei_kana']) . "</p>";} ?></td>
+				</tr>
+				<tr>
+					<th scope="row" class="cover"><span>郵便番号</span></th>
+					<td><span id="loading"><img src="assets/image/loading.gif"></span><input type="text" name="pcode1" class="pcode1 mode-disabled" placeholder="例：160" value="<?php echo @$formObj->params['pcode1']; ?>" maxlength="3"> - <input type="text" name="pcode2" class="pcode2 mode-disabled" placeholder="例：0023" value="<?php echo @$formObj->params['pcode2']; ?>" maxlength="4"> (半角数字)</td>
+				</tr>
+				<tr>
+					<th scope="row"><span>都道府県</span></th>
+					<td><?php echo $formObj->get_select_element('pref', @$formObj->params['pref'], $formObj->pref_arr, 'pref', 'selectElementA01'); ?></td>
+				</tr>
+				<tr>
+					<th scope="row"><span>市区町村・番地</span></th>
+					<td><input type="text" id="city" name="city" placeholder="例：新宿区西新宿1-23-7" value="<?php echo @$formObj->params['city']; ?>"></td>
+				</tr>
+				<tr>
+					<th scope="row"><span>建物名・部屋番号</span></th>
+					<td><input type="text" name="building" placeholder="例：新宿ファーストウエスト16F" value="<?php echo @$formObj->params['building']; ?>"></td>
+				</tr>
+				<tr class="<?php if (@$formObj->params['errors']['tel']) { echo "error"; } ?>">
+					<th scope="row"><span class="required">電話番号</span></th>
+					<td><input type="text" name="tel" class="mode-disabled" placeholder="例：03-3345-6012" value="<?php echo @$formObj->params['tel']; ?>"> (半角数字)<?php if (@$formObj->params['errors']['tel']) { echo "<p class=\"error-txt\">" . $formObj->escape($formObj->params['errors']['tel']) . "</p>";} ?></td>
+				</tr>
+				<tr class="<?php if (@$formObj->params['errors']['mail']) { echo "error"; } ?>">
+					<th scope="row"><span class="required">メールアドレス</span></th>
+					<td><input type="text" name="mail" class="mode-disabled" placeholder="例：example@j-rex.co.jp" value="<?php echo @$formObj->params['mail']; ?>"> (半角英数字)<?php if (@$formObj->params['errors']['mail']) { echo "<p class=\"error-txt\">" . $formObj->escape($formObj->params['errors']['mail']) . "</p>";} ?></td>
+				</tr>
+			</table>
 
-        </div>
+			<table id="" class="tableElemIpt isArticle">
+				<caption>不動産に関する情報</caption>
+				<tr class="<?php if (@$formObj->params['errors']['kind']) { echo "error"; } ?>">
+					<th scope="row"><span class="required">ご相談種別</span></th>
+					<td><?php echo $formObj->get_radio_element('kind', @$formObj->params['kind'], $formObj->kind_arr, 'kind', 'radioElement'); ?><?php if (@$formObj->params['errors']['kind']) { echo "<p class=\"error-txt\">" . $formObj->escape($formObj->params['errors']['kind']) . "</p>";} ?></td>
+				</tr>
+				<tr class="<?php if (@$formObj->params['errors']['condition']) { echo "error"; } ?>">
+					<th scope="row"><span class="required">現在の状況</span></th>
+					<td><?php echo $formObj->get_radio_element('condition', @$formObj->params['condition'], $formObj->condition_arr, 'condition', 'radioElement'); ?><?php if (@$formObj->params['errors']['condition']) { echo "<p class=\"error-txt\">" . $formObj->escape($formObj->params['errors']['condition']) . "</p>";} ?></td>
+				</tr>
+				<tr class="<?php if (@$formObj->params['errors']['article']) { echo "error"; } ?>">
+					<th scope="row"><span class="required">物件の種別</span></th>
+					<td><?php echo $formObj->get_radio_element('article', @$formObj->params['article'], $formObj->article_arr, 'article', 'radioElement'); ?><?php if (@$formObj->params['errors']['article']) { echo "<p class=\"error-txt\">" . $formObj->escape($formObj->params['errors']['article']) . "</p>";} ?></td>
+				</tr>
+				<tr>
+					<th scope="row"><span>所在地、最寄り駅等</span></th>
+					<td><input type="text" id="location" name="location" placeholder="例：杉並区荻窪五丁目" value="<?php echo @$formObj->params['location']; ?>"></td>
+				</tr>
+				<tr class="<?php if (@$formObj->params['errors']['comment']) { echo "error"; } ?>">
+					<th scope="row"><span class="required">ご相談内容</span></th>
+					<td><textarea name="comment" placeholder="例：相続で戸建て住宅を取得したが、3年以上空き家の状態になっている。近い将来売却したいと考えているが、アパート経営も検討している。"><?php echo @$formObj->params['comment']; ?></textarea><?php if (@$formObj->params['errors']['comment']) { echo "<p class=\"error-txt\">" . $formObj->escape($formObj->params['errors']['comment']) . "</p>";} ?></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="button__col"><button class="btn" type='submit' id='onCheck' name='onCheck' value='check'>入力内容の確認</button></td>
+				</tr>
+			</table>
+
+		</div>
 
 	</form>
 <?php endif; ?>
